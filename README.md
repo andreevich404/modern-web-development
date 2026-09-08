@@ -24,4 +24,4 @@ README.md
 
 ### Деплой
 
-[ссылка на деплой, если есть]
+https://andreevich404.github.io/modern-web-development/

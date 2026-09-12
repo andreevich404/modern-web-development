@@ -11,7 +11,7 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a href="#" class="logo">Ivan Andreevich</a>
+      <a href="#about" class="logo">Ivan Andreevich</a>
       <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mainNav">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
@@ -52,129 +52,97 @@
     <section id="skills" class="section skills">
       <div class="container">
         <h2 class="section__title">Навыки</h2>
-        <div class="skills__grid">
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">JavaScript</span>
-              <span class="skill-card__percent">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--90"></div>
-            </div>
+        <div class="skills-carousel" id="skillsCarousel">
+          <button type="button" class="carousel-btn carousel-btn--prev" id="skillsPrev">
+            Предыдущий
+          </button>
+          <div class="skills-carousel__viewport">
+            <ul class="skills-carousel__track" id="skillsTrack">
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">JavaScript</span>
+                  <span class="skill-card__percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--90"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">TypeScript</span>
+                  <span class="skill-card__percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--85"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">Node.js</span>
+                  <span class="skill-card__percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--90"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">React</span>
+                  <span class="skill-card__percent">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--80"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">Express.js</span>
+                  <span class="skill-card__percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--85"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">PostgreSQL</span>
+                  <span class="skill-card__percent">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--75"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">Docker</span>
+                  <span class="skill-card__percent">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--70"></div>
+                </div>
+              </li>
+              <li class="skill-card">
+                <div class="skill-card__header">
+                  <span class="skill-card__name">Git</span>
+                  <span class="skill-card__percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill skill-bar__fill--90"></div>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">TypeScript</span>
-              <span class="skill-card__percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--85"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">Node.js</span>
-              <span class="skill-card__percent">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--90"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">React</span>
-              <span class="skill-card__percent">80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--80"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">Express.js</span>
-              <span class="skill-card__percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--85"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">PostgreSQL</span>
-              <span class="skill-card__percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--75"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">Docker</span>
-              <span class="skill-card__percent">70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--70"></div>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card__header">
-              <span class="skill-card__name">Git</span>
-              <span class="skill-card__percent">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar__fill skill-bar__fill--90"></div>
-            </div>
-          </div>
+          <button type="button" class="carousel-btn carousel-btn--next" id="skillsNext">
+            Следующий
+          </button>
         </div>
       </div>
     </section>
     <section id="portfolio" class="section portfolio">
       <div class="container">
         <h2 class="section__title">Портфолио</h2>
-        <div class="portfolio__grid">
-          <article class="portfolio-card">
-            <div class="portfolio-card__image" aria-hidden="true"></div>
-            <div class="portfolio-card__body">
-              <h3 class="portfolio-card__title">Discord Bot Admin</h3>
-              <p class="portfolio-card__desc">Discord-бот для централизованной административной автоматизации GTA V
-                RolePlay проекта.</p>
-              <p class="portfolio-card__tags">
-                <span class="tag">Discord.js</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Prisma</span>
-                <span class="tag">SQLite</span>
-              </p>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-card__image" aria-hidden="true"></div>
-            <div class="portfolio-card__body">
-              <h3 class="portfolio-card__title">Nexus Dashboard</h3>
-              <p class="portfolio-card__desc">Веб-дашборд для управления серверами Discord с OAuth2-авторизацией и
-                real-time обновлениями.</p>
-              <p class="portfolio-card__tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">React</span>
-                <span class="tag">Express</span>
-                <span class="tag">PostgreSQL</span>
-              </p>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-card__image" aria-hidden="true"></div>
-            <div class="portfolio-card__body">
-              <h3 class="portfolio-card__title">Cipher API</h3>
-              <p class="portfolio-card__desc">REST API с JWT-аутентификацией, rate limiting, документацией Swagger и
-                Docker-деплоем.</p>
-              <p class="portfolio-card__tags">
-                <span class="tag">Express.js</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Docker</span>
-                <span class="tag">PostgreSQL</span>
-              </p>
-            </div>
-          </article>
+        <div class="portfolio__grid" id="portfolioGallery">
+          <p class="portfolio__status">Загрузка работ…</p>
         </div>
       </div>
     </section>
@@ -196,6 +164,27 @@
             rel="noreferrer">GitHub</a>
           <a href="https://t.me/andreevich404" class="contacts__social" target="_blank" rel="noreferrer">Telegram</a>
         </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <h3 class="contact-form__title">Написать мне</h3>
+          <div class="form-field">
+            <label class="form-field__label" for="contactName">Имя</label>
+            <input class="form-field__input" type="text" id="contactName" name="name" autocomplete="name" required>
+            <span class="form-field__error" data-error-for="contactName"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-field__label" for="contactEmail">Email</label>
+            <input class="form-field__input" type="email" id="contactEmail" name="email" autocomplete="email" required>
+            <span class="form-field__error" data-error-for="contactEmail"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-field__label" for="contactMessage">Сообщение</label>
+            <textarea class="form-field__input form-field__input--textarea" id="contactMessage" name="message" rows="5"
+              required></textarea>
+            <span class="form-field__error" data-error-for="contactMessage"></span>
+          </div>
+          <button class="form-submit" type="submit" id="contactSubmit">Отправить</button>
+          <p class="form-status" id="contactStatus" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
@@ -212,6 +201,21 @@
       </nav>
     </div>
   </footer>
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть">&times;</button>
+      <img class="modal__image" id="modalImage" alt="">
+      <div class="modal__body">
+        <h3 class="modal__title" id="modalTitle"></h3>
+        <p class="modal__desc" id="modalDesc"></p>
+        <div class="modal__tags" id="modalTags"></div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Наверх">Вверх</button>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
 </body>
 

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Discord Bot Admin",
+    "description": "Discord-бот для централизованной административной автоматизации GTA V RolePlay проекта.",
+    "image": "images/portfolio-bot.svg",
+    "tags": ["Discord.js", "Node.js", "TypeScript", "Prisma", "SQLite"]
+  },
+  {
+    "id": 2,
+    "title": "Nexus Dashboard",
+    "description": "Веб-дашборд для управления серверами Discord с OAuth2-авторизацией и real-time обновлениями.",
+    "image": "images/portfolio-dashboard.svg",
+    "tags": ["Next.js", "React", "Express", "PostgreSQL"]
+  },
+  {
+    "id": 3,
+    "title": "Cipher API",
+    "description": "REST API с JWT-аутентификацией, rate limiting, документацией Swagger и Docker-деплоем.",
+    "image": "images/portfolio-api.svg",
+    "tags": ["Express.js", "TypeScript", "Docker", "PostgreSQL"]
+  },
+  {
+    "id": 4,
+    "title": "Realtime Gateway",
+    "description": "Шлюз WebSocket-событий для игровых серверов: очереди, presence и синхронизация состояния.",
+    "image": "images/portfolio-realtime.svg",
+    "tags": ["Node.js", "WebSocket", "Redis"]
+  },
+  {
+    "id": 5,
+    "title": "Open Source Utils",
+    "description": "Набор утилит и CLI-инструментов для повседневной разработки: линтеры, генераторы и шаблоны.",
+    "image": "images/portfolio-utils.svg",
+    "tags": ["TypeScript", "CLI", "Open Source"]
+  }
+]

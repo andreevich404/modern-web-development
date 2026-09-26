@@ -1,0 +1,22 @@
+{
+	"name": "modern-web-development",
+	"version": "1.0.0",
+	"description": "Сайт-визитка: вёрстка, jQuery-динамика и стили на Sass (БЭМ, светлая и тёмная темы).",
+	"private": true,
+	"scripts": {
+		"sass:dev": "sass --watch scss/main.scss:dist/css/main.css",
+		"build": "sass --no-source-map --style=compressed scss/main.scss:dist/css/main.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andreevich404/modern-web-development.git"
+	},
+	"author": "Tolkachev Ivan Andreevich",
+	"bugs": {
+		"url": "https://github.com/andreevich404/modern-web-development/issues"
+	},
+	"homepage": "https://github.com/andreevich404/modern-web-development#readme",
+	"devDependencies": {
+		"sass": "^1.105.0"
+	}
+}

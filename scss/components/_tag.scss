@@ -1,0 +1,11 @@
+@use '../utils' as *;
+
+.tag {
+  display: inline-block;
+  padding: rem(5px) rem(12px);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  font-size: $fs-tag;
+  font-weight: 500;
+  border-radius: $radius-pill;
+}

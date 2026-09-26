@@ -1,0 +1,69 @@
+@use '../utils' as *;
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: $radius-lg;
+  box-shadow: var(--color-shadow-card);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
+  @include hover-lift(-3px);
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active {
+    transform: scale(0.985);
+  }
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: rem(20px) rem(22px);
+  }
+
+  &__title {
+    margin-bottom: rem(10px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+  }
+
+  &__desc {
+    color: var(--color-text-muted);
+    font-size: $fs-body-sm;
+    line-height: 1.6;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(8px);
+    margin-top: rem(14px);
+  }
+
+  &__more {
+    align-self: flex-start;
+    margin-top: rem(16px);
+    color: var(--color-primary);
+    font-size: $fs-small;
+    font-weight: 500;
+  }
+}

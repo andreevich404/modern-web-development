@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ivan Andreevich — Портфолио</title>
+  <script>
+    // Применяем тему до загрузки CSS, чтобы не было вспышки светлой темы
+    (function () {
+      var theme = null;
+      try {
+        theme = localStorage.getItem('theme');
+      } catch (e) { }
+      if (theme !== 'dark' && theme !== 'light') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+
+<body class="page">
+  <header class="header" data-header>
+    <div class="header__inner">
+      <a href="#about" class="header__logo">Ivan Andreevich</a>
+      <div class="header__actions">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Переключить тему" aria-pressed="false"
+          title="Переключить тему">
+          <svg class="theme-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+          </svg>
+        </button>
+        <button type="button" class="burger" data-nav-toggle aria-label="Открыть меню" aria-expanded="false"
+          aria-controls="mainNav">
+          <span class="burger__bar"></span>
+          <span class="burger__bar"></span>
+          <span class="burger__bar"></span>
+        </button>
+      </div>
+      <nav class="nav header__nav" id="mainNav" data-nav>
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#about" class="nav__link" data-nav-link>О себе</a></li>
+          <li class="nav__item"><a href="#skills" class="nav__link" data-nav-link>Навыки</a></li>
+          <li class="nav__item"><a href="#portfolio" class="nav__link" data-nav-link>Портфолио</a></li>
+          <li class="nav__item"><a href="#contacts" class="nav__link" data-nav-link>Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="about" class="section about" data-section>
+      <div class="container">
+        <h2 class="section__title">О себе</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <p class="about__paragraph">Fullstack-разработчик. Занимаюсь разработкой веб-приложений и Discord-ботов, специализируюсь на Node.js
+              экосистеме — от REST API до real-time систем.</p>
+            <p class="about__paragraph">Люблю чистый код, интересные архитектурные задачи и open source.</p>
+          </div>
+          <div class="achievements about__achievements">
+            <h3 class="achievements__title">Достижения</h3>
+            <ul class="achievements__list">
+              <li class="achievements__item">3+ года опыта разработки</li>
+              <li class="achievements__item">20+ реализованных проектов</li>
+              <li class="achievements__item">50К+ пользователей в проектах</li>
+              <li class="achievements__item">Fullstack / Bot Developer / Backend Architect</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="section skills" data-section>
+      <div class="container">
+        <h2 class="section__title">Навыки</h2>
+        <div class="carousel" data-carousel>
+          <button type="button" class="button button--outline button--small carousel__btn" data-carousel-prev>
+            Предыдущий
+          </button>
+          <div class="carousel__viewport" data-carousel-viewport>
+            <ul class="carousel__track" data-carousel-track>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">JavaScript</span>
+                  <span class="skill__percent">90%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--90"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">TypeScript</span>
+                  <span class="skill__percent">85%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--85"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">Node.js</span>
+                  <span class="skill__percent">90%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--90"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">React</span>
+                  <span class="skill__percent">80%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--80"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">Express.js</span>
+                  <span class="skill__percent">85%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--85"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">PostgreSQL</span>
+                  <span class="skill__percent">75%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--75"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">Docker</span>
+                  <span class="skill__percent">70%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--70"></div>
+                </div>
+              </li>
+              <li class="skill carousel__item">
+                <div class="skill__header">
+                  <span class="skill__name">Git</span>
+                  <span class="skill__percent">90%</span>
+                </div>
+                <div class="skill__bar">
+                  <div class="skill__bar-fill skill__bar-fill--90"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="button button--outline button--small carousel__btn" data-carousel-next>
+            Следующий
+          </button>
+        </div>
+      </div>
+    </section>
+    <section id="portfolio" class="section portfolio" data-section>
+      <div class="container">
+        <h2 class="section__title">Портфолио</h2>
+        <div class="portfolio__grid" data-portfolio-gallery>
+          <p class="portfolio__status">Загрузка работ…</p>
+        </div>
+      </div>
+    </section>
+    <section id="contacts" class="section contacts" data-section>
+      <div class="container">
+        <h2 class="section__title">Контакты</h2>
+        <div class="contacts__intro">
+          <ul class="contacts__list">
+            <li class="contacts__item">
+              <span class="contacts__label">Email:</span>
+              <a href="mailto:dev@andreevich404.ru" class="contacts__link">dev@andreevich404.ru</a>
+            </li>
+            <li class="contacts__item">
+              <span class="contacts__label">Телефон:</span>
+              <a href="tel:+79123456789" class="contacts__link">+7 912 345 67 89</a>
+            </li>
+          </ul>
+          <div class="contacts__socials">
+            <a href="https://github.com/andreevich404" class="button button--outline contacts__social" target="_blank"
+              rel="noreferrer">GitHub</a>
+            <a href="https://t.me/andreevich404" class="button button--outline contacts__social" target="_blank"
+              rel="noreferrer">Telegram</a>
+          </div>
+        </div>
+        <form class="form" data-contact-form novalidate>
+          <h3 class="form__title">Написать мне</h3>
+          <div class="form__field">
+            <label class="form__label" for="contactName">Имя</label>
+            <input class="form__input" type="text" id="contactName" name="name" data-field autocomplete="name" required>
+            <span class="form__error" data-error-for="contactName"></span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="contactEmail">Email</label>
+            <input class="form__input" type="email" id="contactEmail" name="email" data-field autocomplete="email" required>
+            <span class="form__error" data-error-for="contactEmail"></span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="contactMessage">Сообщение</label>
+            <textarea class="form__input form__input--textarea" id="contactMessage" name="message" data-field rows="5"
+              required></textarea>
+            <span class="form__error" data-error-for="contactMessage"></span>
+          </div>
+          <button class="button button--primary button--block form__submit" type="submit" data-contact-submit>Отправить</button>
+          <p class="form__status" data-contact-status role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2026 Ivan Andreevich. Все права защищены.</p>
+      <nav class="footer__nav">
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#about">О себе</a></li>
+          <li><a class="footer__link" href="#skills">Навыки</a></li>
+          <li><a class="footer__link" href="#portfolio">Портфолио</a></li>
+          <li><a class="footer__link" href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <div class="modal" data-modal aria-hidden="true">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть">&times;</button>
+      <img class="modal__image" data-modal-image alt="">
+      <div class="modal__body">
+        <h3 class="modal__title" id="modalTitle" data-modal-title></h3>
+        <p class="modal__desc" data-modal-desc></p>
+        <div class="modal__tags" data-modal-tags></div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="button button--primary back-to-top" data-back-to-top aria-label="Наверх">Вверх</button>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+@use '../utils' as *;
+
+.theme-toggle {
+  @include flex-center($inline: true);
+  width: rem(40px);
+  height: rem(40px);
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    color $transition-fast,
+    border-color $transition-fast,
+    transform $transition-press;
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &__icon {
+    display: block;
+    width: rem(20px);
+    height: rem(20px);
+  }
+}

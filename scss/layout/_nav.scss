@@ -1,0 +1,40 @@
+@use '../utils' as *;
+
+.nav {
+  display: none;
+  width: 100%;
+
+  @include respond-to(tablet) {
+    display: block !important;
+    width: auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16px);
+    padding: rem(16px) 0;
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      gap: rem(28px);
+      padding: 0;
+    }
+  }
+
+  &__link {
+    font-size: $fs-body-sm;
+    font-weight: 400;
+    color: var(--color-text);
+    transition: color $transition-base;
+
+    &:hover,
+    &--active {
+      color: var(--color-primary);
+    }
+
+    &--active {
+      font-weight: 600;
+    }
+  }
+}

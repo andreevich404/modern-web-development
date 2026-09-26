@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error 'Неизвестный брейкпоинт: #{$breakpoint}. Доступно: #{map.keys($breakpoints)}';
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin flex-center($inline: false) {
+  @if $inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin focus-ring($offset: 2px) {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: $offset;
+}
+
+@mixin hover-lift($shift) {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: var(--color-shadow-card-hover);
+      transform: translateY($shift);
+    }
+  }
+}

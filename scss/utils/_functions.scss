@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as *;
+
+@function rem($px) {
+  @return math.div($px, $base-font-size) * 1rem;
+}
+
+@function z($layer) {
+  @if not map.has-key($z-layers, $layer) {
+    @error 'Неизвестный слой z-index: #{$layer}. Доступно: #{map.keys($z-layers)}';
+  }
+
+  @return map.get($z-layers, $layer);
+}

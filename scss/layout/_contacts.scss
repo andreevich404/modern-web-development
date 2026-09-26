@@ -1,0 +1,49 @@
+@use '../utils' as *;
+
+.contacts {
+  background: var(--color-bg-alt);
+
+  &__intro {
+    @include flex-center;
+    flex-direction: column;
+    max-width: 560px;
+    margin: 0 auto rem(36px);
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(12px);
+    margin-bottom: rem(20px);
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: rem(8px);
+  }
+
+  &__label {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  &__link {
+    color: var(--color-primary);
+    transition: color $transition-base;
+
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+
+  &__socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: rem(14px);
+  }
+}

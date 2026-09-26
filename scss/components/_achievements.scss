@@ -1,0 +1,26 @@
+@use '../utils' as *;
+
+.achievements {
+  &__title {
+    margin-bottom: rem(14px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: rem(10px);
+    padding-left: rem(20px);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+
+    &::before {
+      content: '\2022';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+  }
+}

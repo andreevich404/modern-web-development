@@ -1,0 +1,33 @@
+@use '../utils' as *;
+
+.about {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: rem(32px);
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      gap: rem(48px);
+    }
+  }
+
+  &__text {
+    @include respond-to(tablet) {
+      flex: 1 1 60%;
+    }
+  }
+
+  &__paragraph {
+    margin-bottom: rem(16px);
+    color: var(--color-text-muted);
+    font-size: $fs-lead;
+    line-height: 1.7;
+  }
+
+  &__achievements {
+    @include respond-to(tablet) {
+      flex: 1 1 40%;
+    }
+  }
+}

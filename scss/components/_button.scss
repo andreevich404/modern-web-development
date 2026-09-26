@@ -1,0 +1,63 @@
+@use '../utils' as *;
+
+.button {
+  @include flex-center($inline: true);
+  padding: rem(10px) rem(22px);
+  border: 1px solid transparent;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: inherit;
+  font-size: $fs-body-sm;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background $transition-fast,
+    color $transition-fast,
+    transform $transition-press;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+  }
+
+  &--outline {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+  }
+
+  &--small {
+    min-height: rem(44px);
+    padding: rem(10px) rem(18px);
+  }
+
+  &--block {
+    width: 100%;
+    min-height: rem(48px);
+    font-size: $fs-base;
+    font-weight: 600;
+  }
+}

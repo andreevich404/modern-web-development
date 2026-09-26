@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../utils' as *;
+
+.section {
+  padding: map.get($section-padding, mobile) 0;
+
+  @include respond-to(tablet) {
+    padding: map.get($section-padding, tablet) 0;
+  }
+
+  @include respond-to(desktop) {
+    padding: map.get($section-padding, desktop) 0;
+  }
+
+  &__title {
+    margin-bottom: rem(40px);
+    font-size: $fs-title;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--color-text);
+
+    @include respond-to(desktop) {
+      font-size: $fs-title-lg;
+    }
+  }
+}

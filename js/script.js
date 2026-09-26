@@ -1,13 +1,49 @@
 $(function () {
-  var $navToggle = $('#navToggle');
-  var $mainNav = $('#mainNav');
-  var $modal = $('#projectModal');
-  var $backToTop = $('#backToTop');
+  var $navToggle = $('[data-nav-toggle]');
+  var $mainNav = $('[data-nav]');
+  var $navLinks = $('[data-nav-link]');
+  var $sections = $('[data-section]');
+  var $modal = $('[data-modal]');
+  var $backToTop = $('[data-back-to-top]');
+  var $html = $('html');
+  var themeKey = 'theme';
   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var scrollDuration = 500;
 
+  var $themeToggle = $('[data-theme-toggle]');
+
+  function syncThemeToggle() {
+    $themeToggle.attr('aria-pressed', $html.attr('data-theme') === 'dark' ? 'true' : 'false');
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      $html.attr('data-theme', 'dark');
+    } else {
+      $html.removeAttr('data-theme');
+    }
+
+    syncThemeToggle();
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem(themeKey, theme);
+    } catch (e) {
+      // localStorage может быть недоступен (приватный режим) - тема не сохранится
+    }
+  }
+
+  $themeToggle.on('click', function () {
+    var next = $html.attr('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    saveTheme(next);
+  });
+
+  syncThemeToggle();
+
   function getHeaderHeight() {
-    return $('.site-header').outerHeight() || 60;
+    return $('[data-header]').outerHeight() || 60;
   }
 
   function scrollToTarget($target) {
@@ -25,7 +61,7 @@ $(function () {
     $navToggle.attr('aria-expanded', willOpen ? 'true' : 'false');
   });
 
-  $mainNav.on('click', 'a', function () {
+  $mainNav.on('click', '[data-nav-link]', function () {
     if ($(window).width() < 768) {
       $mainNav.stop(true, true).slideUp(180);
       $navToggle.attr('aria-expanded', 'false');
@@ -53,9 +89,9 @@ $(function () {
 
   function updateActiveNav() {
     var scrollPos = $(window).scrollTop() + getHeaderHeight() + 48;
-    var $current = $('main section[id]').first();
+    var $current = $sections.first();
 
-    $('main section[id]').each(function () {
+    $sections.each(function () {
       var $section = $(this);
       if ($section.offset().top <= scrollPos) {
         $current = $section;
@@ -63,8 +99,8 @@ $(function () {
     });
 
     var id = $current.attr('id');
-    $('.main-nav__list a').removeClass('is-active');
-    $('.main-nav__list a[href="#' + id + '"]').addClass('is-active');
+    $navLinks.removeClass('nav__link--active');
+    $navLinks.filter('[href="#' + id + '"]').addClass('nav__link--active');
   }
 
   function updateBackToTop() {
@@ -88,40 +124,41 @@ $(function () {
   updateBackToTop();
 
   function openModal(item) {
-    $('#modalTitle').text(item.title);
-    $('#modalDesc').text(item.description);
-    $('#modalImage').attr({ src: item.image, alt: item.title });
-    $('#modalTags').empty();
+    var $modalTags = $modal.find('[data-modal-tags]').empty();
+
+    $modal.find('[data-modal-title]').text(item.title);
+    $modal.find('[data-modal-desc]').text(item.description);
+    $modal.find('[data-modal-image]').attr({ src: item.image, alt: item.title });
 
     $.each(item.tags, function (_index, tag) {
-      $('<span>', { class: 'tag', text: tag }).appendTo('#modalTags');
+      $('<span>', { class: 'tag', text: tag }).appendTo($modalTags);
     });
 
     $modal
-      .addClass('is-open')
+      .addClass('modal--open')
       .attr('aria-hidden', 'false')
       .css('opacity', 0)
       .animate({ opacity: 1 }, 220);
-    $('body').addClass('is-modal-open');
+    $('body').addClass('page--locked');
   }
 
   function closeModal() {
     $modal.animate({ opacity: 0 }, 160, function () {
-      $modal.removeClass('is-open').attr('aria-hidden', 'true').css('opacity', '');
+      $modal.removeClass('modal--open').attr('aria-hidden', 'true').css('opacity', '');
     });
-    $('body').removeClass('is-modal-open');
+    $('body').removeClass('page--locked');
   }
 
   $modal.on('click', '[data-modal-close]', closeModal);
 
   $(document).on('keydown', function (event) {
-    if (event.key === 'Escape' && $modal.hasClass('is-open')) {
+    if (event.key === 'Escape' && $modal.attr('aria-hidden') === 'false') {
       closeModal();
     }
   });
 
   function renderPortfolio(items) {
-    var $gallery = $('#portfolioGallery').empty();
+    var $gallery = $('[data-portfolio-gallery]').empty();
 
     $.each(items, function (index, item) {
       var $card = $('<article>', {
@@ -165,12 +202,14 @@ $(function () {
   $.getJSON('data/portfolio.json')
     .done(renderPortfolio)
     .fail(function () {
-      $('#portfolioGallery').html(
+      $('[data-portfolio-gallery]').html(
         '<p class="portfolio__status">Не удалось загрузить портфолио. Запустите сайт через локальный сервер.</p>'
       );
     });
 
-  var $track = $('#skillsTrack');
+  var $carousel = $('[data-carousel]');
+  var $viewport = $carousel.find('[data-carousel-viewport]');
+  var $track = $carousel.find('[data-carousel-track]');
   var $items = $track.children();
   var carouselIndex = 0;
   var carouselTimer = null;
@@ -192,7 +231,7 @@ $(function () {
   }
 
   function layoutCarousel() {
-    var viewportWidth = $('.skills-carousel__viewport').width();
+    var viewportWidth = $viewport.width();
     var visible = getVisibleCount();
     var gap = parseFloat($track.css('column-gap')) || parseFloat($track.css('gap')) || 0;
     var itemWidth = (viewportWidth - gap * (visible - 1)) / visible;
@@ -251,24 +290,24 @@ $(function () {
     }, carouselInterval);
   }
 
-  $('#skillsNext').on('click', function () {
+  $carousel.find('[data-carousel-next]').on('click', function () {
     goToSlide(carouselIndex + 1);
     startCarousel();
   });
 
-  $('#skillsPrev').on('click', function () {
+  $carousel.find('[data-carousel-prev]').on('click', function () {
     goToSlide(carouselIndex - 1);
     startCarousel();
   });
 
-  $('#skillsCarousel').on('mouseenter', stopCarousel).on('mouseleave', startCarousel);
+  $carousel.on('mouseenter', stopCarousel).on('mouseleave', startCarousel);
 
   $(window).on('resize', function () {
     goToSlide(Math.min(carouselIndex, getMaxIndex()));
   });
 
   function initCarousel() {
-    if ($('.skills-carousel__viewport').width() < 40) {
+    if ($viewport.width() < 40) {
       window.setTimeout(initCarousel, 50);
       return;
     }
@@ -282,20 +321,20 @@ $(function () {
     goToSlide(carouselIndex);
   });
 
-  var $form = $('#contactForm');
-  var $status = $('#contactStatus');
-  var $submit = $('#contactSubmit');
+  var $form = $('[data-contact-form]');
+  var $status = $form.find('[data-contact-status]');
+  var $submit = $form.find('[data-contact-submit]');
+  var $name = $form.find('[name="name"]');
+  var $email = $form.find('[name="email"]');
+  var $message = $form.find('[name="message"]');
 
   function setFieldError($input, message) {
     var $error = $('[data-error-for="' + $input.attr('id') + '"]');
     $error.text(message);
-    $input.toggleClass('is-invalid', Boolean(message));
+    $input.toggleClass('form__input--invalid', Boolean(message));
   }
 
   function validateForm() {
-    var $name = $('#contactName');
-    var $email = $('#contactEmail');
-    var $message = $('#contactMessage');
     var isValid = true;
 
     if ($.trim($name.val()) === '') {
@@ -326,14 +365,14 @@ $(function () {
     return isValid;
   }
 
-  $form.on('input', 'input, textarea', function () {
+  $form.on('input', '[data-field]', function () {
     setFieldError($(this), '');
-    $status.removeClass('is-success is-error').text('');
+    $status.removeClass('form__status--success form__status--error').text('');
   });
 
   $form.on('submit', function (event) {
     event.preventDefault();
-    $status.removeClass('is-success is-error').text('');
+    $status.removeClass('form__status--success form__status--error').text('');
 
     if (!validateForm()) {
       return;
@@ -346,19 +385,19 @@ $(function () {
       method: 'POST',
       dataType: 'json',
       data: {
-        name: $.trim($('#contactName').val()),
-        email: $.trim($('#contactEmail').val()),
-        message: $.trim($('#contactMessage').val())
+        name: $.trim($name.val()),
+        email: $.trim($email.val()),
+        message: $.trim($message.val())
       }
     })
       .done(function () {
-        $status.addClass('is-success').hide().text('Сообщение успешно отправлено!').fadeIn(220);
+        $status.addClass('form__status--success').hide().text('Сообщение успешно отправлено!').fadeIn(220);
         $form.trigger('reset');
-        $form.find('.is-invalid').removeClass('is-invalid');
-        $form.find('.form-field__error').text('');
+        $form.find('[data-field]').removeClass('form__input--invalid');
+        $form.find('[data-error-for]').text('');
       })
       .fail(function () {
-        $status.addClass('is-error').hide().text('Не удалось отправить. Попробуйте позже.').fadeIn(220);
+        $status.addClass('form__status--error').hide().text('Не удалось отправить. Попробуйте позже.').fadeIn(220);
       })
       .always(function () {
         $submit.prop('disabled', false).text('Отправить');

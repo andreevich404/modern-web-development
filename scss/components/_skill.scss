@@ -1,0 +1,48 @@
+@use '../utils' as *;
+
+.skill {
+  padding: rem(20px) rem(22px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: $radius-md;
+  box-shadow: var(--color-shadow-card);
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
+  @include hover-lift(-2px);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem(12px);
+    font-size: $fs-body-sm;
+    font-weight: 600;
+  }
+
+  &__percent {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  &__bar {
+    width: 100%;
+    height: 5px;
+    background: var(--color-border);
+    border-radius: $radius-pill;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: $radius-pill;
+    transition: width 0.4s ease;
+  }
+
+  @each $level in $skill-levels {
+    &__bar-fill--#{$level} {
+      width: #{$level}#{'%'};
+    }
+  }
+}

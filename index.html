@@ -55,11 +55,7 @@
     }
     .task h2 {
       margin-top: 0;
-      margin-bottom: 4px;
-    }
-    .focus {
-      color: #4b5563;
-      margin: 0 0 16px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid #e5e7eb;
     }
@@ -122,7 +118,6 @@
     template: `
       <div>
         <h2>Задача 1. Привет, Vue!</h2>
-        <p class="focus">Фокус: интерполяция (<span v-pre>{{ }}</span>) и директива v-model.</p>
         <label for="t1-name">Ваше имя</label>
         <input id="t1-name" type="text" v-model="name" data-testid="t1-input" />
         <p data-testid="t1-greeting">Привет, {{ name }}!</p>
@@ -138,7 +133,6 @@
     template: `
       <div>
         <h2>Задача 2. Реактивный счётчик</h2>
-        <p class="focus">Фокус: реактивные данные (ref) и обработка событий (@click).</p>
         <p data-testid="t2-value">Счётчик: {{ count }}</p>
         <button type="button" data-testid="t2-button" @click="count++">Увеличить</button>
       </div>
@@ -154,7 +148,6 @@
     template: `
       <div>
         <h2>Задача 3. Условный рендеринг</h2>
-        <p class="focus">Фокус: директивы v-if, v-else.</p>
         <button type="button" data-testid="t3-button" @click="visible = !visible">
           {{ visible ? 'Скрыть описание' : 'Показать описание' }}
         </button>
@@ -173,7 +166,6 @@
     template: `
       <div>
         <h2>Задача 4. Список элементов</h2>
-        <p class="focus">Фокус: v-for и уникальные ключи :key.</p>
         <ul data-testid="t4-list">
           <li v-for="(item, index) in items" :key="item.id">{{ index + 1 }}. {{ item.title }}</li>
         </ul>
@@ -195,7 +187,6 @@
     template: `
       <div>
         <h2>Задача 5. Мини-форма</h2>
-        <p class="focus">Фокус: v-model, обработка событий (@submit.prevent), работа с массивами.</p>
         <form @submit.prevent="addPerson" data-testid="t5-form">
           <label for="t5-name">Имя</label>
           <input id="t5-name" type="text" v-model="name" data-testid="t5-name" />
@@ -231,7 +222,6 @@
     template: `
       <div>
         <h2>Задача 6. Вычисляемые свойства</h2>
-        <p class="focus">Фокус: вычисляемые свойства (computed).</p>
         <label for="t6-number">Число</label>
         <input id="t6-number" type="number" v-model.number="number" data-testid="t6-input" />
         <p data-testid="t6-number">Число: {{ shown }}</p>
@@ -254,7 +244,6 @@
     template: `
       <div>
         <h2>Задача 7. Watch и жизненный цикл</h2>
-        <p class="focus">Фокус: onMounted, watch, реактивность.</p>
         <p class="time" data-testid="t7-time">{{ timeText }}</p>
         <p data-testid="t7-greeting">{{ greeting }}</p>
       </div>
